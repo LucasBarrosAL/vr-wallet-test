@@ -15,6 +15,8 @@ import {
 } from '@expo-google-fonts/pt-sans'
 import * as SplashScreen from 'expo-splash-screen'
 import { useCallback } from 'react'
+import { ThemeProvider } from 'styled-components/native'
+import theme from './src/theme'
 
 SplashScreen.preventAutoHideAsync()
 
@@ -39,9 +41,11 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer onReady={onLayoutRootView}>
+    <ThemeProvider theme={theme}>
       <StatusBar style="auto" />
-      <MainStack />
-    </NavigationContainer>
+      <NavigationContainer onReady={onLayoutRootView}>
+        <MainStack />
+      </NavigationContainer>
+    </ThemeProvider>
   )
 }
