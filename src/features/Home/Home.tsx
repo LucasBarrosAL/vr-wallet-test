@@ -6,6 +6,8 @@ export function Home() {
   return (
     <>
       <Text>Home</Text>
+      <Text style={{ fontFamily: 'PTSansCaption_400Regular' }}>Home</Text>
+      <Text style={{ fontFamily: 'PTSans_400Regular' }}>Home</Text>
       <Button
         title="Cadastrar"
         onPress={() => {
