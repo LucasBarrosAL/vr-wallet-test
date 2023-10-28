@@ -1,23 +1,24 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { AddCard, CardList, Home } from '../features'
 
-const Stack = createNativeStackNavigator()
+const { Navigator, Screen } = createNativeStackNavigator()
 
 export function MainStack() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen
+    <Navigator>
+      <Screen
         name="Home"
         component={Home}
+        options={{ headerShown: false }}
       />
-      <Stack.Screen
+      <Screen
         name="AddCard"
         component={AddCard}
       />
-      <Stack.Screen
+      <Screen
         name="CardList"
         component={CardList}
       />
-    </Stack.Navigator>
+    </Navigator>
   )
 }
