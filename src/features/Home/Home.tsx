@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
-import { Container, Title } from './Home.styles'
-import { Button, ContainerBackground } from '@/components'
+import { Container } from './Home.styles'
+import { Button, ContainerBackground, Title } from '@/components'
 
 export function Home() {
   const navigation = useNavigation()

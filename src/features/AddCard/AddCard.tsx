@@ -1,5 +1,12 @@
-import { Text } from 'react-native'
+import { ContainerBackground, Title } from '@/components'
+import { Container } from './AddCard.styles'
 
 export function AddCard() {
-  return <Text>Add Card</Text>
+  return (
+    <ContainerBackground>
+      <Container>
+        <Title>Wallet Test</Title>
+      </Container>
+    </ContainerBackground>
+  )
 }
