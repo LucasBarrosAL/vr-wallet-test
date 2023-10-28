@@ -1,7 +1,13 @@
 import styled from 'styled-components/native'
 
 export const Container = styled.View`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
+  max-width: 310px;
+  gap: 10px;
+`
+
+export const Row = styled.View`
+  height: 74px;
+  max-width: 310px;
+  flex-direction: row;
+  gap: 12px;
 `
