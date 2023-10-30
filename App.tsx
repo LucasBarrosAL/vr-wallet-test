@@ -16,7 +16,9 @@ import {
 import * as SplashScreen from 'expo-splash-screen'
 import { useCallback } from 'react'
 import { ThemeProvider } from 'styled-components/native'
+import { Provider } from 'react-redux'
 import theme from './src/theme'
+import { store } from '@/store'
 
 SplashScreen.preventAutoHideAsync()
 
@@ -44,7 +46,9 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <StatusBar style="auto" />
       <NavigationContainer onReady={onLayoutRootView}>
-        <MainStack />
+        <Provider store={store}>
+          <MainStack />
+        </Provider>
       </NavigationContainer>
     </ThemeProvider>
   )

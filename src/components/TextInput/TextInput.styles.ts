@@ -37,7 +37,15 @@ export const Content = styled.View<ContentProps>`
     hasError ? `2px ${theme.colors.alert.red}` : '0px'};
 `
 
-export const Input = styled(MaskedTextInput)`
+export const InputMask = styled(MaskedTextInput)`
+  flex: 1;
+
+  line-height: 18px;
+  font-size: 16px;
+  font-family: ${({ theme }) => theme.fonts.ptSans.regular};
+`
+
+export const Input = styled.TextInput`
   flex: 1;
 
   line-height: 18px;

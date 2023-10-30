@@ -62,8 +62,8 @@ export function AddCardScreen({ handleSubmit }: AddCardScreenProps) {
         <TextInput
           label="nome do titular do cartão"
           value={ownerName}
-          onChangeText={(_, rawText) => {
-            setOwnerName(rawText)
+          onChangeText={text => {
+            setOwnerName(text)
           }}
         />
         <Row>
