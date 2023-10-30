@@ -1,4 +1,5 @@
 import styled from 'styled-components/native'
+import { MaskedTextInput } from 'react-native-mask-text'
 
 export const Container = styled.View`
   flex: 1;
@@ -16,7 +17,11 @@ export const Label = styled.Text`
   color: ${({ theme }) => theme.colors.light.gray};
 `
 
-export const Content = styled.View`
+interface ContentProps {
+  hasError?: boolean
+}
+
+export const Content = styled.View<ContentProps>`
   height: 46px;
   padding: 5px 10px;
   border-radius: 6px;
@@ -27,9 +32,12 @@ export const Content = styled.View`
   gap: 10px;
 
   background-color: ${({ theme }) => theme.colors.white};
+
+  border: ${({ hasError, theme }) =>
+    hasError ? `2px ${theme.colors.alert.red}` : '0px'};
 `
 
-export const Input = styled.TextInput`
+export const Input = styled(MaskedTextInput)`
   flex: 1;
 
   line-height: 18px;
