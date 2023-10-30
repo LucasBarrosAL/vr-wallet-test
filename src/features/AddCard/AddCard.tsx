@@ -1,18 +1,32 @@
 import { cardsApi } from '@/api/cards.api'
 import { AddCardScreen } from './AddCard.screen'
-import { useEffect } from 'react'
+import { AddCardSuccessScreen } from './AddCardSuccess.screen'
+import { Card } from '@/entities'
+import { getHideCardNumber } from './AddCard.utils'
+import { useNavigation } from '@react-navigation/native'
 
 export function AddCard() {
   const [createCard, { data, isSuccess }] = cardsApi.useCreateCardMutation()
-  function onAddCard(cardData: { number: string; name: string; ccv: string }) {
+  const navigation = useNavigation()
+
+  function onAddCard(cardData: Omit<Card, 'id'>) {
     createCard(cardData)
   }
 
-  useEffect(() => {
-    if (isSuccess) {
-      console.log(data)
-    }
-  }, [isSuccess])
+  function onFinish() {
+    navigation.navigate('Home')
+  }
 
-  return <AddCardScreen handleSubmit={onAddCard} />
+  return isSuccess && data ? (
+    <AddCardSuccessScreen
+      onPressFinish={onFinish}
+      card={{
+        number: getHideCardNumber(data.number),
+        name: data.name,
+        expirationDate: `Validade ${data.expirationDate}`,
+      }}
+    />
+  ) : (
+    <AddCardScreen handleSubmit={onAddCard} />
+  )
 }

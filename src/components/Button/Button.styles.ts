@@ -9,7 +9,7 @@ export const Container = styled.TouchableOpacity.attrs({
   activeOpacity: 0.6,
 })<ButtonProps>`
   height: 48px;
-  width: 310px;
+  width: 300px;
 
   justify-content: center;
   align-items: center;

@@ -3,21 +3,16 @@ import cameraIcon from '@/assets/camera.png'
 import { Container, Row } from './AddCard.styles'
 import { useEffect, useState } from 'react'
 import { isStringEmpyt, isValidExpirationDate } from './AddCard.utils'
-
-interface CardData {
-  number: string
-  name: string
-  ccv: string
-}
+import { Card } from '@/entities'
 
 interface AddCardScreenProps {
-  handleSubmit: (data: CardData) => void
+  handleSubmit: (data: Omit<Card, 'id'>) => void
 }
 
 export function AddCardScreen({ handleSubmit }: AddCardScreenProps) {
   const [cardNumber, setCardNumber] = useState('')
   const [ownerName, setOwnerName] = useState('')
-  const [expiration, setExpiration] = useState('')
+  const [exDate, setExDate] = useState('')
   const [ccv, setCCV] = useState('')
 
   const [disabled, setDisabled] = useState(true)
@@ -27,13 +22,13 @@ export function AddCardScreen({ handleSubmit }: AddCardScreenProps) {
     setDisabled(
       isStringEmpyt(cardNumber) ||
         isStringEmpyt(ownerName) ||
-        isStringEmpyt(expiration) ||
+        isStringEmpyt(exDate) ||
         isStringEmpyt(ccv),
     )
-  }, [cardNumber, ownerName, expiration, ccv])
+  }, [cardNumber, ownerName, exDate, ccv])
 
   function handlePress() {
-    const validExDate = isValidExpirationDate(expiration)
+    const validExDate = isValidExpirationDate(exDate)
     setInvalidExDate(!validExDate)
 
     if (validExDate) {
@@ -41,6 +36,7 @@ export function AddCardScreen({ handleSubmit }: AddCardScreenProps) {
         number: cardNumber,
         name: ownerName,
         ccv,
+        expirationDate: exDate,
       })
     }
   }
@@ -71,10 +67,10 @@ export function AddCardScreen({ handleSubmit }: AddCardScreenProps) {
             label="vencimento"
             placeholder="00/00"
             mask="99/99"
-            value={expiration}
+            value={exDate}
             hasError={invalidExDate}
             onChangeText={text => {
-              setExpiration(text)
+              setExDate(text)
             }}
           />
           <TextInput

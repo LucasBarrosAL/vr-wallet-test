@@ -3,4 +3,5 @@ export interface Card {
   number: string
   ccv: string
   name: string
+  expirationDate: string
 }
