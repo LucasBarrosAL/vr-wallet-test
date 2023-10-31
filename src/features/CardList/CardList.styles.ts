@@ -8,11 +8,10 @@ export const Container = styled.View`
 `
 
 export const Content = styled.View`
-  flex-direction: column;
+  flex: 1;
+  justify-content: center;
   align-items: center;
-  padding: 10px 16px;
-
-  gap: 10px;
+  padding-bottom: 32px;
 `
 
 export const Loading = styled.ActivityIndicator.attrs({
