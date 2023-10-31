@@ -1,55 +1,57 @@
-import { useState } from 'react'
-import { AccordionItem, Title, Content, Header } from './Accordion.styles'
-import { Button } from '../Button/Button'
+import { View } from 'react-native'
+import { AccordionItem } from './AccordionItem'
+import { useCallback, useState } from 'react'
+import { Title } from './Accordion.styles'
+
+export interface CardProps {
+  color: string
+  textColor: string
+  title: string
+
+  id: string
+  number: string
+  ccv: string
+  name: string
+  expirationDate: string
+}
 
 interface AccordionProps {
-  data: {
-    color: string
-    textColor: string
-    title: string
-
-    id: string
-    number: string
-    ccv: string
-    name: string
-    expirationDate: string
-  }[]
+  data: CardProps[]
 }
 
 export function Accordion({ data }: AccordionProps) {
-  const [expanded, setExpanded] = useState(data.length - 1)
+  const [expanded, setExpanded] = useState<string | null>(null)
+  const [cardSelected, setCardSelected] = useState(data[data.length - 1])
+  const [list, setList] = useState(
+    data.filter(item => item.id !== data[data.length - 1].id),
+  )
 
-  return data.map((item, index) => {
-    return (
+  const onCardSelect = useCallback((card: CardProps) => {
+    setCardSelected(card)
+    setList(data.filter(item => item.id !== card.id))
+  }, [])
+
+  return (
+    <View>
+      {list.map(card => {
+        return (
+          <AccordionItem
+            key={card.id}
+            card={card}
+            isSelected={false}
+            expanded={expanded}
+            setExpanded={setExpanded}
+            onSelectCard={() => onCardSelect(card)}
+          />
+        )
+      })}
       <AccordionItem
-        key={item.id}
-        style={{
-          marginTop: index !== 0 && index !== expanded! + 1 ? -45 : 0,
-        }}
-      >
-        <Header
-          color={item.color}
-          key={item.id}
-          onPress={() => {
-            setExpanded(prevId => (prevId === index ? data.length - 1 : index))
-          }}
-        >
-          <Title textColor={item.textColor}>{item.name}</Title>
-        </Header>
-        {expanded === index && expanded !== data.length - 1 ? (
-          <Content>
-            <Button
-              title="pagar com este cartão"
-              onPress={() => {
-                data.push(data.splice(index, 1)[0])
-                setExpanded(data.length - 1)
-              }}
-            />
-          </Content>
-        ) : (
-          <Title>usar este cartão</Title>
-        )}
-      </AccordionItem>
-    )
-  })
+        card={cardSelected}
+        isSelected={true}
+        expanded={expanded}
+        setExpanded={setExpanded}
+      />
+      <Title>usar este cartão</Title>
+    </View>
+  )
 }

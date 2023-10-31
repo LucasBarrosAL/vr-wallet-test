@@ -9,7 +9,7 @@ interface CardShowProps extends Card {
 }
 
 interface CardListProps {
-  data: CardShowProps[] | undefined
+  data?: CardShowProps[]
   isLoading: boolean
 }
 
@@ -17,7 +17,9 @@ export function CardListScreen({ data, isLoading }: CardListProps) {
   return (
     <Container>
       <Header>Meus cartões</Header>
-      <Content>{isLoading ? <Loading /> : <Accordion data={data!} />}</Content>
+      {data && data.length !== 0 && (
+        <Content>{isLoading ? <Loading /> : <Accordion data={data} />}</Content>
+      )}
     </Container>
   )
 }

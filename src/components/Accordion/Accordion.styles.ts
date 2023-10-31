@@ -1,3 +1,5 @@
+// import Animated from 'react-native-reanimated'
+import Animated from 'react-native-reanimated'
 import styled from 'styled-components/native'
 
 export const Container = styled.View`
@@ -11,9 +13,7 @@ interface HeaderProps {
   textColor?: string
 }
 
-export const Header = styled.TouchableOpacity.attrs({
-  activeOpacity: 1,
-})<HeaderProps>`
+export const Header = styled.Pressable<HeaderProps>`
   height: 75px;
   width: 300px;
   padding: 16px;
@@ -29,6 +29,6 @@ export const Title = styled.Text<TextProps>`
   color: ${({ textColor, theme }) => textColor || theme.colors.white};
 `
 
-export const Content = styled.View`
+export const Content = styled(Animated.View)`
   /* background-color: yellowgreen; */
 `
