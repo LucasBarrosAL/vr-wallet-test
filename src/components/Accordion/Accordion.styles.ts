@@ -8,6 +8,7 @@ export const AccordionItem = styled.View``
 
 interface HeaderProps {
   color: string
+  textColor?: string
 }
 
 export const Header = styled.TouchableOpacity.attrs({
@@ -15,15 +16,19 @@ export const Header = styled.TouchableOpacity.attrs({
 })<HeaderProps>`
   height: 75px;
   width: 300px;
-  padding: 12px 16px;
+  padding: 16px;
 
   border-radius: 32px 32px 0px 0px;
 
   background-color: ${({ color }) => color};
 `
-
-export const Title = styled.Text``
+interface TextProps {
+  textColor?: string
+}
+export const Title = styled.Text<TextProps>`
+  color: ${({ textColor, theme }) => textColor || theme.colors.white};
+`
 
 export const Content = styled.View`
-  background-color: yellowgreen;
+  /* background-color: yellowgreen; */
 `
