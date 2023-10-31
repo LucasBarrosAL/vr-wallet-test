@@ -16,5 +16,8 @@ export const cardsApi = createApi({
         },
       }),
     }),
+    getCards: builder.query<Card[], void>({
+      query: () => `/cards`,
+    }),
   }),
 })

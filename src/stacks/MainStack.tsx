@@ -38,6 +38,7 @@ export function MainStack() {
           headerTintColor: theme.colors.light.blue,
           headerTitleStyle: {
             fontFamily: theme.fonts.ptSansCaption.regular,
+            color: theme.colors.dark.blue,
             fontSize: 22,
           },
           headerBackVisible: true,

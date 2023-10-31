@@ -1,5 +1,17 @@
-import { Text } from 'react-native'
+import { cardsApi } from '@/api/cards.api'
+import { CardListScreen } from './CardList.screen'
 
 export function CardList() {
-  return <Text>CardList</Text>
+  const { data, isLoading } = cardsApi.useGetCardsQuery()
+
+  return (
+    <CardListScreen
+      data={data?.map(item => ({
+        color: 'black',
+        title: 'Card',
+        ...item,
+      }))}
+      isLoading={isLoading}
+    />
+  )
 }
