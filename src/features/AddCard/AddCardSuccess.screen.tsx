@@ -18,9 +18,12 @@ export function AddCardSuccessScreen({
         <Title>Wallet Test</Title>
         <Subtitle>cartão cadastrado com sucesso</Subtitle>
         <CardView
-          color={theme.colors.black}
-          title="Black Card"
-          {...card}
+          card={{
+            color: theme.colors.black,
+            title: 'Black Card',
+            textColor: theme.colors.white,
+            ...card,
+          }}
         />
         <Button
           title="avançar"

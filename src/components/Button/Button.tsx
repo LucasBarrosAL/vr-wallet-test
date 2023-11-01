@@ -1,7 +1,8 @@
+import { TouchableOpacityProps } from 'react-native'
 import { Container, Title } from './Button.styles'
 export type ButtonOptions = 'primary' | 'secundary'
 
-interface ButtonProps {
+interface ButtonProps extends TouchableOpacityProps {
   title: string
   onPress?: () => void
   disabled?: boolean
@@ -13,12 +14,14 @@ export function Button({
   onPress,
   disabled = false,
   type = 'primary',
+  ...rest
 }: ButtonProps) {
   return (
     <Container
       disabled={disabled}
       type={type}
       onPress={onPress}
+      {...rest}
     >
       <Title
         disabled={disabled}

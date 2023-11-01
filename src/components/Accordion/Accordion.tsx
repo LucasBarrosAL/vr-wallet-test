@@ -1,16 +1,16 @@
-import { View } from 'react-native'
-import { AccordionItem } from './AccordionItem'
+import { AccordionItem } from './AccordionItem/AccordionItem'
 import { useCallback, useState } from 'react'
-import { Title } from './Accordion.styles'
+import { Container, Title } from './Accordion.styles'
+import { CardView } from '../CardView/CardView'
 
 export interface CardProps {
   color: string
   textColor: string
   title: string
 
-  id: string
+  id?: string
   number: string
-  ccv: string
+  ccv?: string
   name: string
   expirationDate: string
 }
@@ -32,7 +32,7 @@ export function Accordion({ data }: AccordionProps) {
   }, [])
 
   return (
-    <View>
+    <Container>
       {list.map(card => {
         return (
           <AccordionItem
@@ -45,13 +45,11 @@ export function Accordion({ data }: AccordionProps) {
           />
         )
       })}
-      <AccordionItem
+      <CardView
+        style={{ marginTop: -10 }}
         card={cardSelected}
-        isSelected={true}
-        expanded={expanded}
-        setExpanded={setExpanded}
       />
       <Title>usar este cartão</Title>
-    </View>
+    </Container>
   )
 }

@@ -1,12 +1,4 @@
-// import Animated from 'react-native-reanimated'
-import Animated from 'react-native-reanimated'
 import styled from 'styled-components/native'
-
-export const Container = styled.View`
-  margin-top: 60px;
-`
-
-export const AccordionItem = styled.View``
 
 interface HeaderProps {
   color: string
@@ -14,29 +6,22 @@ interface HeaderProps {
 }
 
 export const Header = styled.Pressable<HeaderProps>`
-  height: 75px;
   width: 300px;
-  padding: 16px;
+  padding: 32px 16px 20px;
 
-  border-radius: 32px 32px 0px 0px;
+  border-radius: 16px 16px 0px 0px;
 
   background-color: ${({ color }) => color};
 `
 interface TextProps {
   textColor?: string
 }
-export const Title = styled.Text<TextProps>`
-  text-align: center;
-  line-height: 18px;
-  margin-top: 10px;
 
-  font-size: 16px;
+export const Title = styled.Text<TextProps>`
+  line-height: 20px;
+
+  font-size: 18px;
   font-family: ${({ theme }) => theme.fonts.ptSans.regular};
 
   color: ${({ textColor, theme }) => textColor || theme.colors.white};
-`
-
-export const Content = styled(Animated.View)`
-  gap: 32px;
-  /* background-color: yellowgreen; */
 `
