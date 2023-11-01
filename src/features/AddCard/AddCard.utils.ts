@@ -7,9 +7,14 @@ export function isValidExpirationDate(date: string) {
     return false
   }
 
-  const dates = date.split('/')
-  const month = Number(dates[0])
-  const year = Number(dates[1]) + 2000
+  const monthAndYear = date.split('/')
+  const month = Number(monthAndYear[0])
+
+  if (month > 12 || month <= 0) {
+    return false
+  }
+
+  const year = Number(monthAndYear[1]) + 2000
 
   const today = new Date()
   const expirationDate = new Date()
@@ -17,10 +22,4 @@ export function isValidExpirationDate(date: string) {
   expirationDate.setFullYear(year, month - 1)
 
   return expirationDate >= today
-}
-
-export function getHideCardNumber(cardNumber: string) {
-  const numberParts = cardNumber.split(' ')
-
-  return `•••• •••• •••• ${numberParts[3]}`
 }

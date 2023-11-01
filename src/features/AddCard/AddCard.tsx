@@ -1,9 +1,9 @@
+import { useNavigation } from '@react-navigation/native'
 import { cardsApi } from '@/api/cards.api'
 import { AddCardScreen } from './AddCard.screen'
 import { AddCardSuccessScreen } from './AddCardSuccess.screen'
 import { Card } from '@/entities'
-import { getHideCardNumber } from './AddCard.utils'
-import { useNavigation } from '@react-navigation/native'
+import { getHideCardNumber } from '@/utils'
 
 export function AddCard() {
   const [createCard, { data, isSuccess }] = cardsApi.useCreateCardMutation()
@@ -11,6 +11,10 @@ export function AddCard() {
 
   function onAddCard(cardData: Omit<Card, 'id'>) {
     createCard(cardData)
+      .unwrap()
+      .catch(err => {
+        console.error(err)
+      })
   }
 
   function onFinish() {
@@ -23,7 +27,7 @@ export function AddCard() {
       card={{
         number: getHideCardNumber(data.number),
         name: data.name,
-        expirationDate: `Validade ${data.expirationDate}`,
+        expirationDate: data.expirationDate,
       }}
     />
   ) : (

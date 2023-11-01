@@ -1,4 +1,5 @@
-import { CardProps } from '@/components/Accordion/Accordion'
+import { getHideCardNumber } from '@/utils'
+import { CardProps } from '../CardView'
 import { Container, Label } from './CardContent.styles'
 
 interface CardContentProps {
@@ -7,8 +8,6 @@ interface CardContentProps {
 }
 
 export function CardContent({ card, onPress }: CardContentProps) {
-  const lastDigits = card.number.split(' ')
-
   return (
     <Container
       cardColor={card.color}
@@ -21,9 +20,7 @@ export function CardContent({ card, onPress }: CardContentProps) {
       >
         {card.name}
       </Label>
-      <Label
-        textColor={card.textColor}
-      >{`•••• •••• •••• ${lastDigits[3]}`}</Label>
+      <Label textColor={card.textColor}>{getHideCardNumber(card.number)}</Label>
       <Label
         textColor={card.textColor}
       >{`Validade ${card.expirationDate}`}</Label>

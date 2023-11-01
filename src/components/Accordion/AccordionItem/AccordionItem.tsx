@@ -14,13 +14,12 @@ import {
   Content,
 } from './AccordionItem.styles'
 import { Button } from '../../Button/Button'
-import { CardProps } from '../Accordion'
 import { CardContent } from '@/components/CardView/CardContent/CardContent'
 import { CardHeader } from '@/components/CardView/CardHeader/CardHeader'
+import { CardProps } from '@/components/CardView/CardView'
 
 interface AccordionItemProps {
   card: CardProps
-  isSelected: boolean
   expanded: string | undefined
   setExpanded: React.Dispatch<React.SetStateAction<string | undefined>>
   onSelectCard?: () => void
@@ -28,7 +27,6 @@ interface AccordionItemProps {
 
 export function AccordionItem({
   card,
-  isSelected,
   expanded,
   setExpanded,
   onSelectCard,
@@ -56,10 +54,6 @@ export function AccordionItem({
   }, [expanded])
 
   const handlePress = useCallback(() => {
-    if (isSelected) {
-      return
-    }
-
     if (heightValue.value === 0) {
       runOnUI(() => {
         heightValue.value = withTiming(
@@ -92,19 +86,16 @@ export function AccordionItem({
             card={card}
             onPress={handlePress}
           />
-
-          {!isSelected && (
-            <Button
-              title="pagar com este cartão"
-              onPress={() => {
-                onSelectCard?.()
-              }}
-              style={{
-                marginTop: 100,
-                marginBottom: 100,
-              }}
-            />
-          )}
+          <Button
+            title="pagar com este cartão"
+            onPress={() => {
+              onSelectCard?.()
+            }}
+            style={{
+              marginTop: 100,
+              marginBottom: 100,
+            }}
+          />
         </AnimatedContent>
       </Content>
     </AccordionItemStyled>

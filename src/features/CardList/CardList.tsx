@@ -1,6 +1,7 @@
 import { cardsApi } from '@/api/cards.api'
 import { CardListScreen } from './CardList.screen'
 import theme from '@/theme'
+import { Title } from '@/components'
 
 const CARD_COLOR = [
   {
@@ -16,9 +17,11 @@ const CARD_COLOR = [
 ]
 
 export function CardList() {
-  const { data, isLoading } = cardsApi.useGetCardsQuery()
+  const { data, isLoading, isError } = cardsApi.useGetCardsQuery()
 
-  return (
+  return isError ? (
+    <Title style={{ color: 'black' }}>Request Error</Title>
+  ) : (
     <CardListScreen
       data={data?.map((item, index) => ({
         color: CARD_COLOR[index % 2].color,

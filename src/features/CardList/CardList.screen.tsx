@@ -1,16 +1,10 @@
 import { Accordion, Header } from '@/components'
 import { Container, Content, Loading } from './CardList.styles'
-import { Card } from '@/entities'
 import { SafeAreaView, ScrollView } from 'react-native'
-
-interface CardShowProps extends Card {
-  color: string
-  textColor: string
-  title: string
-}
+import { CardProps } from '@/components/CardView/CardView'
 
 interface CardListProps {
-  data?: CardShowProps[]
+  data?: CardProps[]
   isLoading: boolean
 }
 
