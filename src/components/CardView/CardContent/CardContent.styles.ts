@@ -7,7 +7,6 @@ interface ContainerProps {
 export const Container = styled.Pressable<ContainerProps>`
   display: flex;
 
-  margin-top: -1px;
   width: 300px;
   height: 100px;
   padding: 0px 16px 10px;

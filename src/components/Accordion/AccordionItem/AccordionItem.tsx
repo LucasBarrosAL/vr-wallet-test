@@ -1,3 +1,4 @@
+import { useWindowDimensions } from 'react-native'
 import React, { useCallback, useEffect } from 'react'
 import Animated, {
   measure,
@@ -5,7 +6,6 @@ import Animated, {
   useAnimatedRef,
   useAnimatedStyle,
   useSharedValue,
-  withSpring,
   withTiming,
 } from 'react-native-reanimated'
 import {
@@ -21,8 +21,8 @@ import { CardHeader } from '@/components/CardView/CardHeader/CardHeader'
 interface AccordionItemProps {
   card: CardProps
   isSelected: boolean
-  expanded: string | null
-  setExpanded: React.Dispatch<React.SetStateAction<string | null>>
+  expanded: string | undefined
+  setExpanded: React.Dispatch<React.SetStateAction<string | undefined>>
   onSelectCard?: () => void
 }
 
@@ -33,21 +33,21 @@ export function AccordionItem({
   setExpanded,
   onSelectCard,
 }: AccordionItemProps) {
+  const windowHeight = useWindowDimensions().height
+
   const listRef = useAnimatedRef<Animated.View>()
   const heightValue = useSharedValue(0)
   const itemOpacityValue = useSharedValue(0)
-  const paddingValue = useSharedValue(0)
 
   const heightAnimationStyle = useAnimatedStyle(() => ({
     height: heightValue.value,
     opacity: itemOpacityValue.value,
   }))
 
-  function onClose() {
+  const onClose = useCallback(() => {
     itemOpacityValue.value = withTiming(0)
-    paddingValue.value = withSpring(0)
     heightValue.value = withTiming(0)
-  }
+  }, [itemOpacityValue, heightValue])
 
   useEffect(() => {
     if (expanded !== card.id) {
@@ -62,15 +62,15 @@ export function AccordionItem({
 
     if (heightValue.value === 0) {
       runOnUI(() => {
-        'worklet'
-        paddingValue.value = withSpring(100)
-        heightValue.value = withTiming(measure(listRef)?.height * 1.2)
+        heightValue.value = withTiming(
+          measure(listRef)?.height + windowHeight - 685,
+        )
         itemOpacityValue.value = withTiming(1)
       })()
     } else {
       onClose()
     }
-    setExpanded(card.id || null)
+    setExpanded(value => (value === card.id ? undefined : card.id))
   }, [])
 
   return (

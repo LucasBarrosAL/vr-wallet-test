@@ -3,7 +3,7 @@ import Animated from 'react-native-reanimated'
 import styled from 'styled-components/native'
 
 export const Container = styled.View`
-  margin-top: 60px;
+  margin-top: 30px;
 `
 
 export const AccordionItem = styled.View``
@@ -38,5 +38,4 @@ export const Title = styled.Text<TextProps>`
 
 export const Content = styled(Animated.View)`
   gap: 32px;
-  /* background-color: yellowgreen; */
 `

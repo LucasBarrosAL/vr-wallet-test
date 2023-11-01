@@ -1,7 +1,12 @@
 import { AccordionItem } from './AccordionItem/AccordionItem'
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { Container, Title } from './Accordion.styles'
 import { CardView } from '../CardView/CardView'
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated'
 
 export interface CardProps {
   color: string
@@ -20,16 +25,30 @@ interface AccordionProps {
 }
 
 export function Accordion({ data }: AccordionProps) {
-  const [expanded, setExpanded] = useState<string | null>(null)
+  const [expanded, setExpanded] = useState<string | undefined>()
   const [cardSelected, setCardSelected] = useState(data[data.length - 1])
   const [list, setList] = useState(
     data.filter(item => item.id !== data[data.length - 1].id),
   )
 
+  const opacityValue = useSharedValue(1)
+
+  const opacityAnimationStyle = useAnimatedStyle(() => ({
+    opacity: opacityValue.value,
+  }))
+
   const onCardSelect = useCallback((card: CardProps) => {
     setCardSelected(card)
     setList(data.filter(item => item.id !== card.id))
   }, [])
+
+  useEffect(() => {
+    if (expanded !== undefined) {
+      opacityValue.value = withTiming(0.75)
+    } else {
+      opacityValue.value = withTiming(1)
+    }
+  }, [expanded])
 
   return (
     <Container>
@@ -41,15 +60,20 @@ export function Accordion({ data }: AccordionProps) {
             isSelected={false}
             expanded={expanded}
             setExpanded={setExpanded}
-            onSelectCard={() => onCardSelect(card)}
+            onSelectCard={() => {
+              onCardSelect(card)
+              setExpanded(undefined)
+            }}
           />
         )
       })}
-      <CardView
-        style={{ marginTop: -10 }}
-        card={cardSelected}
-      />
-      <Title>usar este cartão</Title>
+      <Animated.View style={opacityAnimationStyle}>
+        <CardView
+          style={{ marginTop: -10 }}
+          card={cardSelected}
+        />
+        <Title>usar este cartão</Title>
+      </Animated.View>
     </Container>
   )
 }

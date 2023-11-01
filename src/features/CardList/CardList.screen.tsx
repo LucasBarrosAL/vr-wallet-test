@@ -25,7 +25,7 @@ export function CardListScreen({ data, isLoading }: CardListProps) {
       >
         <ScrollView
           contentContainerStyle={{
-            paddingTop: 30,
+            paddingTop: 20,
             flexGrow: 1,
             justifyContent: 'center',
           }}
