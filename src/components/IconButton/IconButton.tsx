@@ -3,7 +3,7 @@ import { Container, Icon } from './IconButton.styles'
 
 interface IconButtonProps {
   source: ImageSourcePropType
-  onPress: () => void
+  onPress?: () => void
 }
 
 export function IconButton({ source, onPress }: IconButtonProps) {

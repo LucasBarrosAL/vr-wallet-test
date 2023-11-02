@@ -19,6 +19,7 @@ export function TextInput({
   mask,
   value,
   onChangeText,
+  testID,
   ...rest
 }: TextInputProps) {
   return (
@@ -28,6 +29,7 @@ export function TextInput({
         {source && <IconButton source={source} />}
         {mask ? (
           <InputMask
+            testID={testID}
             mask={mask}
             value={value}
             onChangeText={onChangeText}
@@ -35,6 +37,7 @@ export function TextInput({
           />
         ) : (
           <Input
+            testID={testID}
             value={value}
             onChangeText={onChangeText}
           />

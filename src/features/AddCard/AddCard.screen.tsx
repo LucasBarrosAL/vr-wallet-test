@@ -46,6 +46,7 @@ export function AddCardScreen({ handleSubmit }: AddCardScreenProps) {
       <Container>
         <Title style={{ marginBottom: 16 }}>Wallet Test</Title>
         <TextInput
+          testID="input-card-number"
           label="número do cartão"
           source={cameraIcon}
           keyboardType="numeric"
@@ -56,6 +57,7 @@ export function AddCardScreen({ handleSubmit }: AddCardScreenProps) {
           }}
         />
         <TextInput
+          testID="input-card-name"
           label="nome do titular do cartão"
           value={ownerName}
           onChangeText={text => {
