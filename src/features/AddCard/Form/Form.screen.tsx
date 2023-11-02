@@ -69,10 +69,12 @@ export function FormScreen({ handleSubmit }: FormScreenProps) {
             label="vencimento"
             placeholder="00/00"
             mask="99/99"
+            keyboardType="numeric"
             value={exDate}
             hasError={invalidExDate}
             onChangeText={text => {
               setExDate(text)
+              setInvalidExDate(false)
             }}
           />
           <TextInput
