@@ -1,5 +1,5 @@
 import { Accordion, Header } from '@/components'
-import { Container, Content, Loading } from './CardList.styles'
+import { Container, Content, Loading } from './cardList.styles'
 import { SafeAreaView, ScrollView } from 'react-native'
 import { CardProps } from '@/components/CardView/CardView'
 

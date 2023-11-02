@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import { Container } from './Home.styles'
+import { Container } from './home.styles'
 import { Button, ContainerBackground, Title } from '@/components'
 
 export function Home() {
