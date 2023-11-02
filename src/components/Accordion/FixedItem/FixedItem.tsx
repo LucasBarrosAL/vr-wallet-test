@@ -4,18 +4,15 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated'
-import { Title } from './AccordionFixedItem.styles'
+import { Title } from './fixedItem.styles'
 import { useEffect } from 'react'
 
-interface AccordionFixedItemProps {
+interface FixedItemProps {
   card: CardProps
   expanded: string | undefined
 }
 
-export function AccordionFixedItem({
-  card,
-  expanded,
-}: AccordionFixedItemProps) {
+export function FixedItem({ card, expanded }: FixedItemProps) {
   const opacityValue = useSharedValue(1)
 
   const opacityAnimationStyle = useAnimatedStyle(() => ({

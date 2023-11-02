@@ -1,5 +1,5 @@
 import { TextProps } from 'react-native'
-import { Title as TitleStyled } from './Title.styles'
+import { Title as TitleStyled } from './title.styles'
 
 interface TitleProps extends TextProps {
   children: string

@@ -1,5 +1,5 @@
 import { TouchableOpacityProps } from 'react-native'
-import { Container, Title } from './Button.styles'
+import { Container, Title } from './button.styles'
 export type ButtonOptions = 'primary' | 'secundary'
 
 interface ButtonProps extends TouchableOpacityProps {

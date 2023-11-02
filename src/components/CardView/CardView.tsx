@@ -2,7 +2,7 @@ import { ViewProps } from 'react-native'
 // import { Container, Label, Title } from './CardView.styles'
 import { CardHeader } from './CardHeader/CardHeader'
 import { CardContent } from './CardContent/CardContent'
-import { Container } from './CardView.styles'
+import { Container } from './cardView.styles'
 
 export interface CardProps {
   color: string

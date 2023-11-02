@@ -1,5 +1,5 @@
-import { CardProps } from '@/components/Accordion/Accordion'
-import { Header, Title } from './CardHeader.styles'
+import { CardProps } from '../CardView'
+import { Header, Title } from './cardHeader.styles'
 
 interface CardHeaderProps {
   card: CardProps

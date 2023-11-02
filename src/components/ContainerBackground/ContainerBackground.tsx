@@ -5,7 +5,7 @@ import {
   BottomImageBackground,
   Container,
   TopImageBackground,
-} from './ContainerBackground.styles'
+} from './containerBackground.styles'
 
 interface ContainerBackgroundProps {
   children: React.ReactNode

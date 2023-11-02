@@ -1,5 +1,5 @@
 import { ImageSourcePropType } from 'react-native'
-import { Container, Content, Input, InputMask, Label } from './TextInput.styles'
+import { Container, Content, Input, InputMask, Label } from './textInput.styles'
 import { IconButton } from '../IconButton/IconButton'
 import { MaskedTextInputProps } from 'react-native-mask-text'
 

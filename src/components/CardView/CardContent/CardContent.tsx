@@ -1,6 +1,6 @@
 import { getHideCardNumber } from '@/utils'
 import { CardProps } from '../CardView'
-import { Container, Label } from './CardContent.styles'
+import { Container, Label } from './cardContent.styles'
 
 interface CardContentProps {
   card: CardProps

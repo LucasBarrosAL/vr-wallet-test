@@ -1,8 +1,8 @@
-import { AccordionItem } from './AccordionItem/AccordionItem'
 import { useCallback, useState } from 'react'
-import { Container } from './Accordion.styles'
-import { AccordionFixedItem } from './AccordionFixedItem/AccordionFixedItem'
 import { CardProps } from '../CardView/CardView'
+import { Container } from './accordion.styles'
+import { FixedItem } from './FixedItem/FixedItem'
+import { Item } from './Item/Item'
 
 interface AccordionProps {
   data: CardProps[]
@@ -24,7 +24,7 @@ export function Accordion({ data }: AccordionProps) {
     <Container>
       {list.map(card => {
         return (
-          <AccordionItem
+          <Item
             key={card.id}
             card={card}
             expanded={expanded}
@@ -36,7 +36,7 @@ export function Accordion({ data }: AccordionProps) {
           />
         )
       })}
-      <AccordionFixedItem
+      <FixedItem
         card={cardSelected}
         expanded={expanded}
       />

@@ -1,5 +1,5 @@
 import { TextProps } from 'react-native'
-import { Container, Title } from './Header.styles'
+import { Container, Title } from './header.styles'
 
 interface HeaderProps extends TextProps {
   children: string

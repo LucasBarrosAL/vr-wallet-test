@@ -12,25 +12,20 @@ import {
   AccordionItem as AccordionItemStyled,
   AnimatedContent,
   Content,
-} from './AccordionItem.styles'
+} from './item.styles'
 import { Button } from '../../Button/Button'
 import { CardContent } from '@/components/CardView/CardContent/CardContent'
 import { CardHeader } from '@/components/CardView/CardHeader/CardHeader'
 import { CardProps } from '@/components/CardView/CardView'
 
-interface AccordionItemProps {
+interface ItemProps {
   card: CardProps
   expanded: string | undefined
   setExpanded: React.Dispatch<React.SetStateAction<string | undefined>>
   onSelectCard?: () => void
 }
 
-export function AccordionItem({
-  card,
-  expanded,
-  setExpanded,
-  onSelectCard,
-}: AccordionItemProps) {
+export function Item({ card, expanded, setExpanded, onSelectCard }: ItemProps) {
   const windowHeight = useWindowDimensions().height
 
   const listRef = useAnimatedRef<Animated.View>()

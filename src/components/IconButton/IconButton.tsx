@@ -1,5 +1,5 @@
 import { ImageSourcePropType } from 'react-native'
-import { Container, Icon } from './IconButton.styles'
+import { Container, Icon } from './iconButton.styles'
 
 interface IconButtonProps {
   source: ImageSourcePropType
