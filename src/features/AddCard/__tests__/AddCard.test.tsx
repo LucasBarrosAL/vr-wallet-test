@@ -1,19 +1,8 @@
 /* eslint-disable no-undef */
-import React, { ReactNode } from 'react'
+import React from 'react'
 import { fireEvent, render, waitFor } from '@testing-library/react-native'
 import { AddCard } from '../AddCard'
-import { Provider } from 'react-redux'
-import { store } from '@/store'
-import { ThemeProvider } from 'styled-components/native'
-import theme from '@/theme'
-
-export function Providers(props: { children: ReactNode }) {
-  return (
-    <ThemeProvider theme={theme}>
-      <Provider store={store}>{props.children}</Provider>
-    </ThemeProvider>
-  )
-}
+import { Providers } from '@/tests/utils'
 
 jest.mock('@react-navigation/native', () => ({
   useNavigation: jest.fn(),

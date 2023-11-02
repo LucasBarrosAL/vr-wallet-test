@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import { cardsApi } from '@/api/cards.api'
-import { AddCardScreen } from './AddCard.screen'
-import { AddCardSuccessScreen } from './AddCardSuccess.screen'
+import { FormScreen } from './Form'
+import { SuccessScreen } from './Success'
 import { Card } from '@/entities'
 import { getHideCardNumber } from '@/utils'
 
@@ -22,7 +22,7 @@ export function AddCard() {
   }
 
   return isSuccess && data ? (
-    <AddCardSuccessScreen
+    <SuccessScreen
       onPressFinish={onFinish}
       card={{
         number: getHideCardNumber(data.number),
@@ -31,6 +31,6 @@ export function AddCard() {
       }}
     />
   ) : (
-    <AddCardScreen handleSubmit={onAddCard} />
+    <FormScreen handleSubmit={onAddCard} />
   )
 }

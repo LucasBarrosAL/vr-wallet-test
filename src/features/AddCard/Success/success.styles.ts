@@ -5,13 +5,6 @@ export const Container = styled.View`
   gap: 10px;
 `
 
-export const Row = styled.View`
-  height: 74px;
-  max-width: 300px;
-  flex-direction: row;
-  gap: 12px;
-`
-
 export const Subtitle = styled.Text`
   text-align: center;
 

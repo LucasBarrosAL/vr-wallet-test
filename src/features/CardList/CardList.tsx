@@ -17,10 +17,12 @@ const CARD_COLOR = [
 ]
 
 export function CardList() {
-  const { data, isLoading, isError } = cardsApi.useGetCardsQuery()
+  const { data, isLoading, isError, error } = cardsApi.useGetCardsQuery()
 
   return isError ? (
-    <Title style={{ color: 'black' }}>Request Error</Title>
+    <Title style={{ color: 'black', fontSize: 14 }}>
+      {JSON.stringify(error)}
+    </Title>
   ) : (
     <CardListScreen
       data={data?.map((item, index) => ({

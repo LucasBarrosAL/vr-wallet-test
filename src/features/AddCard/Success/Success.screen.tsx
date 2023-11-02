@@ -1,17 +1,14 @@
 import { Button, CardView, ContainerBackground, Title } from '@/components'
-import { Container, Subtitle } from './AddCard.styles'
+import { Container, Subtitle } from './success.styles'
 import { Card } from '@/entities'
 import theme from '@/theme'
 
-interface AddCardSuccessScreenProps {
+interface SuccessScreenProps {
   card: Omit<Card, 'id' | 'ccv'>
   onPressFinish: () => void
 }
 
-export function AddCardSuccessScreen({
-  card,
-  onPressFinish,
-}: AddCardSuccessScreenProps) {
+export function SuccessScreen({ card, onPressFinish }: SuccessScreenProps) {
   return (
     <ContainerBackground>
       <Container>

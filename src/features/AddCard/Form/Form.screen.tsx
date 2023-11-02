@@ -1,15 +1,15 @@
 import { Button, ContainerBackground, TextInput, Title } from '@/components'
 import cameraIcon from '@/assets/camera.png'
-import { Container, Row } from './AddCard.styles'
+import { Container, Row } from './form.styles'
 import { useEffect, useState } from 'react'
-import { isStringEmpyt, isValidExpirationDate } from './AddCard.utils'
+import { isStringEmpyt, isValidExpirationDate } from './form.utils'
 import { Card } from '@/entities'
 
-interface AddCardScreenProps {
+interface FormScreenProps {
   handleSubmit: (data: Omit<Card, 'id'>) => void
 }
 
-export function AddCardScreen({ handleSubmit }: AddCardScreenProps) {
+export function FormScreen({ handleSubmit }: FormScreenProps) {
   const [cardNumber, setCardNumber] = useState('')
   const [ownerName, setOwnerName] = useState('')
   const [exDate, setExDate] = useState('')
